@@ -1,8 +1,8 @@
 "use strict"
 
-// let counter = 0;
 
-function passwordIsCorrect(password){
+
+function passwordIsValid(password){
 
   var myRegex = new RegExp( /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*()_+~]).{8,}/ );
  
@@ -16,12 +16,12 @@ function passwordIsCorrect(password){
  	  
  	}
 }
-// console.log(passwordIsCorrect("Kurtlin1@"))
 
 
 
 
-// new task
+
+
 function passwordIsOkay(passwordTwo){
 
     var lowerCase  		= /^[a-z]/g
@@ -32,21 +32,22 @@ function passwordIsOkay(passwordTwo){
     
   
    
-  if((passwordTwo.length > 8) && (passwordTwo == "")) {
+  if((passwordTwo.length < 9) || (passwordTwo === null)) {
        
-  return false;
+  return passwordIsOkay;
   
   }
   else{
     if( (lowerCase.test(passwordTwo))|| (upperCase.test(passwordTwo)) || (digits.test(passwordTwo) )||(specialCharacters.test(passwordTwo))) {
         return true;
   }
+
 }
 }
 
 
 
  module.exports = {
-     passwordIsCorrect, passwordIsOkay
+     passwordIsValid, passwordIsOkay
  }
  
