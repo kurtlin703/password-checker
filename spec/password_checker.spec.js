@@ -1,35 +1,45 @@
-let myChecker = require("../src/password_checker")
+let mySpecChecker = require("../src/password_checker");
+let passwordIsValid = mySpecChecker.passwordIsValid;
 
-
-
-describe("passwordIsValid",function () {
-        it("password should exist", function(){
-            expect(myChecker.passwordIsValid("K@urtlin1@")).toBe(true)
-        })
-        it("password should be longer then 8 characters", function(){
-            expect(myChecker.passwordIsValid("K@urtlin1@")).toBe(true)
-        })
-        it("password should have one lower case letter", function(){
-            expect(myChecker.passwordIsValid("K@URTLIn1@")).toBe(true)
-        })
-        it("password should have one uppercase letter", function(){
-            expect(myChecker.passwordIsValid("K@urtlin1@")).toBe(true)
-        })
-        it("password should have one digit", function(){
-            expect(myChecker.passwordIsValid("Kurtlin1@")).toBe(true)
-        })
-        it("password should have one special character", function(){
-            expect(myChecker.passwordIsValid("K@rtlin!0")).toBe(true)    
-        })
-})
+describe("passwordIsValid", () => {
+  it("password should exist", () => {
+    expect(() => {
+      passwordIsValid("");
+    }).toThrow(new Error("Your password should exist"));
+  });
+  it("password should be longer then 8 characters if not return false", () => {
+    expect(() => {
+      passwordIsValid("K@rt1");
+    }).toThrow(new Error("your password should be longer then 8 characters"));
+  });
+  it("password should have one lower case letter if not return false", () => {
+    expect(() => {
+      passwordIsValid("K@RTLIN111");
+    }).toThrow(new Error("your password should have one lower case letter"));
+  });
+  it("password should have one uppercase letter if not return false", () => {
+    expect(() => {
+      passwordIsValid("k@rtlin111");
+    }).toThrow(new Error("your password should have one upper case letter"));
+  });
+  it("password should have one digit if not return false", () => {
+    expect(() => {
+      passwordIsValid("K@rtlin@!#$");
+    }).toThrow(new Error("your password should have one digit"));
+  });
+  it("password should have one special character if not return false", () => {
+    expect(() => {
+      passwordIsValid("Kurtlin111");
+    }).toThrow(new Error("your password should have one special character"));
+  });
+});
 
 // new function
 
+let passwordIsOkay = mySpecChecker.passwordIsOkay;
 
-
-describe("passwordIsOkay", function(){
-    it("password should return true if three requirements are met", function(){
-        expect(myChecker.passwordIsOkay("kurtlin10")).toBe(true)
-    })
-})
-        
+describe("passwordIsOkay", () => {
+  it("password should return true if three requirements are met", () => {
+    expect(passwordIsOkay("kurtlin10")).toBe(true);
+  });
+});
