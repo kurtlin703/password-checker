@@ -8,8 +8,8 @@ function passwordIsValid(password) {
   let passwordLength = new RegExp(/[A-Za-z0-9]{8,}/);
 
   if (password == "") 
-    throw new Error("password should exist");
-  if (upperCase.test(password) == false)
+    throw  Error("password should exist");
+  if (upperCase.test(password) == true)
     throw new Error("password should have one upper case letter");
   if (lowerCase.test(password) == false)
     throw new Error("password should have one lower case letter");

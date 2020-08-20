@@ -6,7 +6,7 @@ describe("passwordIsValid", () => {
     expect(() => {
       passwordIsValid("");
     }).toThrow(new Error("Your password should exist"));
-  });
+  }); 
   it("password should be longer then 8 characters if not return false", () => {
     expect(() => {
       passwordIsValid("K@rt1");
@@ -24,13 +24,13 @@ describe("passwordIsValid", () => {
   });
   it("password should have one digit if not return false", () => {
     expect(() => {
-      passwordIsValid("K@rtlin@!#$");
+      passwordIsValid("K@rtl2in@!#$");
     }).toThrow(new Error("your password should have one digit"));
   });
   it("password should have one special character if not return false", () => {
     expect(() => {
-      passwordIsValid("Kurtlin111");
-    }).toThrow(new Error("your password should have one special character"));
+      passwordIsValid("Kurtlin11@1");
+    }).toBe(false);
   });
 });
 
